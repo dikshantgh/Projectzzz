@@ -1,5 +1,4 @@
-// add heading and check if ftell is o then only doo it again.
-// add id counter
+//author: Dikshant Ghimire
 #include<stdio.h>
 #include<time.h>
 #include<stdlib.h>
@@ -23,7 +22,7 @@ int main()
     int entered_id;
     while(1){
             printf("___________________________________________________________________________________\n");
-    puts("\n1.Enter the record\n2.Search the record\n3.Display all records\n4.Exit\nEnter your choice:");
+    puts("\n1.Enter the record\n2.Search the record\n3.Display all records\n4.Edit the record\n5.Exit\nEnter your choice:");
     int choice;
     scanf("%d",&choice);
     fflush(stdin);
@@ -60,7 +59,7 @@ int main()
             while(fread(&v,sizeof(v),1,fp))
             {
                 if((strcasecmp(v.name,search_name))==0)
-                    printf("%d.\t%s\t%s\t\t%s", v.id, v.name, v.category, ctime(&v.tm));
+                    printf("%d. %s\t%s\t%s", v.id, v.name, v.category, ctime(&v.tm));
             }
             fclose(fp);
             break;
@@ -72,15 +71,45 @@ int main()
             fp = fopen("visitors.txt","rb");
             while(fread(&v,sizeof(v),1,fp))
             {
-                    printf("%d.\t%s\t%s\t\t%s", v.id, v.name, v.category, ctime(&v.tm));
+                    printf("%d. %s\t\t%s\t\t%s\n", v.id, v.name, v.category, ctime(&v.tm));
             }
             fclose(fp);
             break;
 
-    case 4:
+    case 5:
         puts("\nExiting........ key any key to exit");
         exit(0);
         break;
+
+    case 4:
+            puts("Enter the id to modify:");
+            scanf("%d",&entered_id);
+            fflush(stdin);
+             puts("\n Displaying the related ID Record\n");
+             puts("\nId\t Name \t\t Category \t Date and Time");
+            fp = fopen("visitors.txt","rb+");
+            if(fp==NULL)
+            {
+                puts("Error....!!!");
+                exit(1);
+            }
+            while(fread(&v,sizeof(v),1,fp))
+            {
+                if(entered_id==v.id){
+                    printf("%d. %s\t%s\t%s", v.id, v.name, v.category, ctime(&v.tm));
+                    puts("Enter the new name:");
+                    gets(v.name);
+                    puts("Enter the new category");
+                    gets(v.category);
+                    fseek(fp, ftell(fp) - sizeof(v), SEEK_SET);
+                    fwrite(&v, sizeof(v), 1, fp);
+                    puts("The record has been updated..");
+                    break;
+                }
+            }
+            fclose(fp);
+            break;
+
 
     default:
 

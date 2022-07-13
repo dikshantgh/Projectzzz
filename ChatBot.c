@@ -1,28 +1,32 @@
-// ai chat bot in c programming
+// author : dikshant
 #include<stdio.h>
 #include<string.h>
 #include<time.h>
 #include<stdlib.h>
-char user_input[];
+
 int main()
 {
+    char user_input[1000];
+
     system("COLOR 31");
     printf("\n\t\t WELCOME THIS IS CHATBOT ARENA\n \t\t[created by BIM I Semester at HSMSS]\n");
     printf("___________________________________________________________________________________\n");
+    puts("\nBot==>Hello there ! My name is HSM bot.\nWhat is your name?\n");
+    printf("user ==>");
+    gets(user_input);
+    printf("\nbot ==> Hi %s .You can open applications using open command..\n",user_input);
     while(1)
     {
-    puts("\nBot==>Hello there !, my name is HSM bot.");
+
      printf("user ==> ");
      gets(user_input);
+    puts("\n------------------------------------------\n");
+
      if(strcmp(user_input,"exit")==0)
      {
 
-         printf("bot ==> ok byy\n");
+         printf("bot ==> ok byeeee\n");
          break;
-     }
-     else if(strcmp(user_input,"hi")==0)
-     {
-         printf("bot ==> hi sir\n");
      }
      else if(strcmp(user_input,"open chrome")==0)
      {
@@ -62,8 +66,12 @@ int main()
      }
       else if(strcmp(user_input,"search")==0)
      {
-        printf("playing!!");
+        printf("searching!!");
         system("start https://www.youtube.com/results?search_query=hello");
+     }
+     else
+     {
+         puts("bot ==> Command not found. Try Again !!!");
      }
     }
     return 0;
