@@ -6,9 +6,12 @@
 char user_input[];
 int main()
 {
-    printf("welcome in ai chat bot\n");
+    system("COLOR 31");
+    printf("\n\t\t WELCOME THIS IS CHATBOT ARENA\n \t\t[created by BIM I Semester at HSMSS]\n");
+    printf("___________________________________________________________________________________\n");
     while(1)
     {
+    puts("\nBot==>Hello there !, my name is HSM bot.");
      printf("user ==> ");
      gets(user_input);
      if(strcmp(user_input,"exit")==0)
@@ -33,8 +36,8 @@ int main()
      }
      else if(strcmp(user_input,"open cmd")==0)
      {
-         printf("ok sir , opeaning cmd terminal \n");
-         system("start terminal");
+         printf("ok sir , opeaning cmd \n");
+         system("start cmd");
      }
      else if(strcmp(user_input,"time")==0)
      {
@@ -51,6 +54,16 @@ int main()
      {
         printf("ok sir , opeaning youtube \n");
         system("start http://youtube.com");
+     }
+     else if(strcmp(user_input,"open calculator")==0)
+     {
+        printf("Opening calculator!!");
+        system("start calc");
+     }
+      else if(strcmp(user_input,"search")==0)
+     {
+        printf("playing!!");
+        system("start https://www.youtube.com/results?search_query=hello");
      }
     }
     return 0;
