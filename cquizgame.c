@@ -8,6 +8,7 @@
 #include<ctype.h>
 #include<stdlib.h>
 #include<string.h>
+
 int main()
      {
      system("COLOR 31");
@@ -28,29 +29,35 @@ int main()
     char store[500];
     char ans;
     char correct_answer;
+    int counter=0;
     fflush(stdin);
     switch(choice)
      {
 
     case 1:
-        while(fgets(store,sizeof(store),fq))
-        {
-            fflush(stdin);
-            printf("%s", store);
-            fgets(store,sizeof(store),fo);
-            printf("%s", store);
-            puts("Your answer:");
-            scanf("%c",&ans);
-            fscanf(fa,"%c",&correct_answer);
-            printf("--%c--",correct_answer);
-            if(correct_answer==ans)
-                puts("correct!!");
-            else
-                puts("wrong");
-        }
-            fclose(fq);
-            break;
-        }
 
+            while(counter<3){
+            puts("------------------------");
+            fgets(store,sizeof(store),fq);
+            printf("%s",store);
+            fgets(store,sizeof(store),fo);
+            printf("\n%s",store);
+            puts("Your ans:");
+            scanf("%c",&ans);
+            correct_answer=getc(fa);
+            fflush(stdin);
+            if(correct_answer==ans){
+                puts("Correct!!");
+                counter++;}
+            else{
+                puts("Wrong !! Try next time");
+                break;}
+            }
+            fclose(fq);
+            fclose(fo);
+            fclose(fa);
+            break;
+
+     }
      return 0;
      }
