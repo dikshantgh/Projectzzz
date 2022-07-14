@@ -30,17 +30,17 @@ int main()
      }
      else if(strcmp(user_input,"open chrome")==0)
      {
-         printf("ok sir , opeaning chrome browser \n");
+         printf("ok sir , opening chrome browser \n");
          system("start chrome");
      }
      else if(strcmp(user_input,"open notepad")==0)
      {
-         printf("ok sir , opeaning notpad editor \n");
+         printf("ok sir , opening notpad editor \n");
          system("start notepad");
      }
      else if(strcmp(user_input,"open cmd")==0)
      {
-         printf("ok sir , opeaning cmd \n");
+         printf("ok sir , opening cmd \n");
          system("start cmd");
      }
      else if(strcmp(user_input,"time")==0)
@@ -53,10 +53,13 @@ int main()
          //print time in minute
          //print hour and second
          printf("bot ==> %02d:%02d:%02d\n",current_time->tm_hour,current_time->tm_min,current_time->tm_sec);
+//         time_t tm;
+//         time(&tm);
+//         printf("%s",ctime(&tm);
      }
      else if(strcmp(user_input,"open youtube")==0)
      {
-        printf("ok sir , opeaning youtube \n");
+        printf("ok sir , opening youtube \n");
         system("start http://youtube.com");
      }
      else if(strcmp(user_input,"open calculator")==0)
