@@ -20,6 +20,12 @@ int main()
     FILE *fp ;
     int counter =1;
     int entered_id;
+    fp = fopen("visitors.txt","rb");
+    if(fp!=NULL){
+        fseek(fp, -sizeof(v), 2);
+        fread(&v,sizeof(v),1,fp);
+        counter= ++v.id;}
+    fclose(fp);
     while(1){
             printf("___________________________________________________________________________________\n");
     puts("\n1.Enter the record\n2.Search the record\n3.Display all records\n4.Edit the record\n5.Exit\nEnter your choice:");
@@ -49,7 +55,7 @@ int main()
             puts("Enter the name to search:");
             gets(search_name);
              puts("\n Displaying Search Records\n");
-             puts("\nId\t Name \t\t Category \t Date and Time");
+             puts("\nId\t Name \t\t       Category \t Date and Time");
             fp = fopen("visitors.txt","rb");
             if(fp==NULL)
             {
@@ -59,7 +65,7 @@ int main()
             while(fread(&v,sizeof(v),1,fp))
             {
                 if((strcasecmp(v.name,search_name))==0)
-                    printf("%d. %s\t%s\t%s", v.id, v.name, v.category, ctime(&v.tm));
+                    printf("%d. \t%s\t\t%s\t\t%s", v.id, v.name, v.category, ctime(&v.tm));
             }
             fclose(fp);
             break;
@@ -67,11 +73,11 @@ int main()
 
     case 3:
              puts("\n Displaying all Records:\n");
-             puts("\nId\t Name \t \tCategory \t \tDate and Time");
+             puts("\nId\t Name \t \t       Category \t \tDate and Time");
             fp = fopen("visitors.txt","rb");
             while(fread(&v,sizeof(v),1,fp))
             {
-                    printf("%d. %s\t\t%s\t\t%s\n", v.id, v.name, v.category, ctime(&v.tm));
+                    printf("%d. \t%s\t\t%s\t\t%s\n", v.id, v.name, v.category, ctime(&v.tm));
             }
             fclose(fp);
             break;
