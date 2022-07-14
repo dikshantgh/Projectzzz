@@ -5,17 +5,25 @@
 //show high score too
 
 #include<stdio.h>
-#include<ctype.h>
 #include<stdlib.h>
 #include<string.h>
+#include<windows.h>
+struct user
+{
+    char username[20];
+    int score;
+}u;
 
 int main()
      {
      system("COLOR 31");
 
+     while(1){
+    FILE *fu;
     FILE *fq;
     FILE *fo;
     FILE *fa;
+
     fq = fopen("questions.txt","r");
     fo = fopen("options.txt","r");
     fa = fopen("answers.txt","r");
@@ -26,16 +34,20 @@ int main()
     int choice;
     puts("enter your choice:");
     scanf("%d",&choice);
+    //choice=getchar();
     char store[500];
     char ans;
     char correct_answer;
     int counter=0;
     fflush(stdin);
+
     switch(choice)
      {
 
     case 1:
-
+            puts("enter your username.:");
+            gets(u.username);
+            u.score =0;
             while(counter<3){
             puts("------------------------");
             fgets(store,sizeof(store),fq);
@@ -47,17 +59,43 @@ int main()
             correct_answer=getc(fa);
             fflush(stdin);
             if(correct_answer==ans){
-                puts("Correct!!");
-                counter++;}
+                printf("\nCorrect!!  %c\n",2);
+                counter++;
+                u.score++;
+                }
             else{
-                puts("Wrong !! Try next time");
+
+
+                puts("\nWrong !! Try next time\n");
                 break;}
+
             }
+            printf("Your score is %d", u.score);
+            fu = fopen("score.txt","ab");
+            fwrite(&u, sizeof(u),1,fu);
             fclose(fq);
             fclose(fo);
             fclose(fa);
+            fclose(fu);
             break;
 
+        case 2:
+            fu = fopen("score.txt","rb");
+            puts("UserName\t\tScore\n--------------------------------------");
+            while(fread(&u,sizeof(u),1,fu))
+            {
+                printf("%s\t\t\t%d\n",u.username,u.score);
+            }
+            fclose(fu);
+            break;
+
+        case 3:
+            puts("Exiting..............!!");
+            exit(0);
+            break;
+        default:
+            puts("Invalid Choice.. Try again");
+     }
      }
      return 0;
      }

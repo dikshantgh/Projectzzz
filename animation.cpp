@@ -5,7 +5,6 @@
 #include <dos.h>
 
 int main() {
-
     int gd = DETECT, gm;
 
     int i, maxx, midy;
