@@ -1,4 +1,5 @@
 // author : dikshant
+//do my task bot
 #include<stdio.h>
 #include<string.h>
 #include<time.h>
@@ -69,8 +70,17 @@ int main()
      }
       else if(strcmp(user_input,"search")==0)
      {
-        printf("searching!!");
-        system("start https://www.youtube.com/results?search_query=hello");
+        printf("eNTER WHAT YOU WANT TO SEARCH:");
+        char word[50];
+        gets(word);
+        for(int i=0;word[i]!='\0';i++)
+        {
+            if(word[i]==' ')
+                word[i]='+';
+        }
+        char url[]="start https://www.youtube.com/results?search_query=";
+        strcat(url,word);
+        system(url);
      }
      else
      {
