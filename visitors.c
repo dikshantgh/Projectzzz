@@ -24,8 +24,9 @@ int main()
     if(fp!=NULL){
         fseek(fp, -sizeof(v), 2);
         fread(&v,sizeof(v),1,fp);
-        counter= ++v.id;}
-    fclose(fp);
+        counter= ++v.id;
+        fclose(fp);}
+
     while(1){
             printf("___________________________________________________________________________________\n");
     puts("\n1.Enter the record\n2.Search the record\n3.Display all records\n4.Edit the record\n5.Exit\nEnter your choice:");
