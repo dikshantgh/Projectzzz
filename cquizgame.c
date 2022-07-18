@@ -1,9 +1,3 @@
-//author : dikshant ghimire
-//1. question answer using file
-//user name unique
-// score record in a file
-//show high score too
-
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -22,16 +16,20 @@ int main()
     FILE *fo;
     FILE *fa;
     char temp_name[20];
-     while(1){
+ while(1){
+
+
+     puts("\n\t\t\tWELCOME TO QUIZ GAME ARENA\n\t\t\t[created by BIM I Semester HSMSS]");
+    printf("___________________________________________________________________________________\n");
+
 
 
     fq = fopen("questions.txt","r");
     fo = fopen("options.txt","r");
     fa = fopen("answers.txt","r");
 
-    puts("\n\t\t\tWELCOME TO QUIZ GAME ARENA\n\t\t\t[created by BIM I Semester HSMSS]");
-    printf("___________________________________________________________________________________\n");
-    puts("1. PLAY GAME\n2. Display all scores \n3. Exit");
+printf("\n___________________________________________________________________________________\n");
+    puts("\n1. PLAY GAME\n2. Display all scores \n3. Exit");
     int choice;
     puts("enter your choice:");
     scanf("%d",&choice);
@@ -53,6 +51,7 @@ int main()
             while(fread(&u,sizeof(u),1,fu))
             {
                 if((strcasecmp(temp_name,u.username))==0){
+
                     puts("This name already taken!!!Choose new name");
                     goto Label1;}
                 else{
@@ -60,13 +59,13 @@ int main()
                     u.score =0;}
              }
                 fclose(fu);
-            while(counter<3){
+            while(counter<16){
             puts("------------------------");
             fgets(store,sizeof(store),fq);
             printf("%s",store);
             fgets(store,sizeof(store),fo);
             printf("\n%s",store);
-            puts("Your ans:");
+            puts("\nYour ans:");
             scanf("%c",&ans);
             correct_answer=getc(fa);
             fflush(stdin);

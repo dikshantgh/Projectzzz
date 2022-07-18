@@ -47,6 +47,7 @@ int main()
             fwrite(&v,sizeof(v),1,fp);
     //        fprintf(fp,"%s \t %s \t %s \t\n",v.name,v.category,ctime(&v.tm));
             fclose(fp);
+
             puts("\n Record added successfully\n");
             counter++;
             break;
@@ -92,8 +93,8 @@ int main()
             puts("Enter the id to modify:");
             scanf("%d",&entered_id);
             fflush(stdin);
-             puts("\n Displaying the related ID Record\n");
-             puts("\nId\t Name \t\t Category \t Date and Time");
+            puts("\n Displaying the related ID Record\n");
+            puts("\nId\t Name \t \t       Category \t \tDate and Time");
             fp = fopen("visitors.txt","rb+");
             if(fp==NULL)
             {
@@ -103,7 +104,7 @@ int main()
             while(fread(&v,sizeof(v),1,fp))
             {
                 if(entered_id==v.id){
-                    printf("%d. %s\t%s\t%s", v.id, v.name, v.category, ctime(&v.tm));
+                    printf("%d. \t%s\t\t%s\t\t%s\n", v.id, v.name, v.category, ctime(&v.tm));
                     puts("Enter the new name:");
                     gets(v.name);
                     puts("Enter the new category");
